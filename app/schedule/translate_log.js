@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 
 module.exports = app => {
   const config = app.config.reallog || {};
-  const times = config.interval || '20s';
+  const times = config.interval || '2m';
   const targetDir = config.dir || `${app.baseDir}/log`;
   return {
     schedule: {
