@@ -8,7 +8,7 @@ const moment = require('moment');
 module.exports = app => ({
   schedule: {
     type: 'worker', // only one worker run this task
-    cron: '0 59 23 * *', // run every day at 23:59
+    cron: '0 59 23 * * *', // run every day at 23:59
   },
 
   async task() {
