@@ -5,12 +5,12 @@ const fs = require('fs-extra');
 
 module.exports = app => {
   const config = app.config.reallog || {};
-  const interval = config.interval || '20s';
+  const times = config.interval || '20s';
   const targetDir = config.dir || `${app.baseDir}/log`;
   return {
     schedule: {
       type: 'worker', // only one worker run this task
-      interval: '2m', // 每2分钟将logger同步到对应的日志目录
+      interval: times, // 每2分钟将logger同步到对应的日志目录
     },
     async task() {
       const logger = app.coreLogger;
