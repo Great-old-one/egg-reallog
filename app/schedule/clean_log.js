@@ -19,7 +19,6 @@ module.exports = app => ({
       const maxDays = config.maxDays || 7;
       // 清除目标文件夹下过期的日志
       await removeTargetLog(targetPath, maxDays);
-      logger.info('[egg-logrotator] clean all log before %s days');
       // 同时清除源文件的类容
       const srcPath = app.loggers.logger.get('jsonFile').options.file;
       if (!srcPath) return;
@@ -55,7 +54,6 @@ async function removeTargetLog(logdir, maxDays) {
       names.map(name => {
         const logfile = path.join(logdir, name);
         return fs.unlink(logfile).catch(err => {
-          err.message = `[egg-logrotator] remove logfile ${logfile} error, ${err.message}`;
           console.log(err);
         });
       })

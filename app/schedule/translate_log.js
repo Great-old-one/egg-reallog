@@ -20,7 +20,9 @@ module.exports = app => {
         const targetPath = `${targetDir}/${app.name}.${moment(new Date().getTime()).format('YYYY-MM-DD')}.json.log`;
         await fs.ensureFile(targetPath);
         await fs.copy(srcPath, targetPath);
+        logger.info('egg-reallog complete sync!');
       } catch (e) {
+        e.message = 'egg-reallog error';
         logger.error(e);
       }
     },

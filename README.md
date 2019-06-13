@@ -1,4 +1,4 @@
-# egg-logrotator
+# egg-logreal
 
 sync logs to targetDir 
 
